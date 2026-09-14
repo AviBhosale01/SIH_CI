@@ -39,7 +39,7 @@ def render_login_view():
         if st.button("⚡ 1-Click Demo Login", key="btn_quick_demo_login", use_container_width=True):
             st.session_state["authenticated_user"] = DEMO_CREDENTIALS
             st.session_state["active_case_id"] = "FIR-104"
-            st.session_state["nav_route"] = "📊 Investigator Dashboard"
+            st.session_state["requested_page"] = "📊 Investigator Dashboard"
             st.success("Authenticated as PI Vikram Patil (Badge: MH-PN-4082)!")
             st.rerun()
 
@@ -61,7 +61,7 @@ def render_login_view():
                         "badge_id": "MH-PN-4082"
                     }
                     st.session_state["active_case_id"] = "FIR-104"
-                    st.session_state["nav_route"] = "📊 Investigator Dashboard"
+                    st.session_state["requested_page"] = "📊 Investigator Dashboard"
                     st.success("Login Successful. Redirecting...")
                     st.rerun()
                 else:
@@ -160,7 +160,7 @@ def render_register_view():
                     }
                     st.session_state["authenticated_user"] = new_user
                     st.session_state["active_case_id"] = "FIR-104"
-                    st.session_state["nav_route"] = "📊 Investigator Dashboard"
+                    st.session_state["requested_page"] = "📊 Investigator Dashboard"
                     st.success("Account created successfully! Investigator profile registered. Redirecting to Dashboard...")
                     st.rerun()
 

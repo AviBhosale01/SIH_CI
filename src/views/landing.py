@@ -46,7 +46,7 @@ def render_landing_view():
         if st.button("⚡ 1-Click Hero Demo (FIR-104)", key="btn_hero_demo", use_container_width=True):
             st.session_state["authenticated_user"] = DEMO_CREDENTIALS
             st.session_state["active_case_id"] = "FIR-104"
-            st.session_state["nav_route"] = "📊 Investigator Dashboard"
+            st.session_state["requested_page"] = "📊 Investigator Dashboard"
             st.rerun()
 
     render_html("<br><hr style='border-top: 1px solid rgba(0, 229, 255, 0.2); margin: 30px 0;'>")

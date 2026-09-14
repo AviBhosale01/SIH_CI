@@ -75,7 +75,7 @@ def render_cases_view():
                 with col_btn2:
                     if st.button("🕸️ Build Investigation Graph", key=f"btn_graph_case_{c['case_id']}", use_container_width=True):
                         st.session_state["active_case_id"] = c["case_id"]
-                        st.session_state["nav_route"] = "🕸️ Knowledge Graph Workspace"
+                        st.session_state["requested_page"] = "🕸️ Knowledge Graph Workspace"
                         st.rerun()
 
     with tab_create:

@@ -6,6 +6,15 @@ from src.core.config import DEMO_CREDENTIALS
 from src.core.synthetic_data import DEMO_CASES
 from src.utils.styles import render_html
 
+def navigate_to(route_name: str):
+    """
+    Safely navigate to an investigation module or portal screen in Streamlit
+    without violating widget key immutability constraints.
+    """
+    st.session_state["requested_page"] = route_name
+    st.rerun()
+
+
 def render_sidebar():
     """
     Render CrimeLens navigation sidebar with investigator profile,
@@ -67,7 +76,7 @@ def render_sidebar():
             "📄 Investigation Report Generator"
         ]
 
-        # Handle programmatic navigation requests
+        # Handle programmatic navigation requests before widget instantiation
         if "requested_page" in st.session_state and st.session_state["requested_page"]:
             req_p = st.session_state.pop("requested_page")
             if req_p in nav_options:
@@ -83,13 +92,13 @@ def render_sidebar():
         col_act1, col_act2 = st.sidebar.columns(2)
         with col_act1:
             if st.button("🌐 Landing", key="btn_sb_landing", use_container_width=True):
-                st.session_state["public_page"] = "landing"
+                st.session_state["public_page"] = "🌐 Landing Page"
                 st.session_state["authenticated_user"] = None
                 st.rerun()
         with col_act2:
             if st.button("🚪 Logout", key="btn_sb_logout", use_container_width=True):
                 st.session_state["authenticated_user"] = None
-                st.session_state["public_page"] = "login"
+                st.session_state["public_page"] = "🔐 Investigator Login"
                 st.rerun()
 
         return "authenticated", selected_nav
@@ -102,6 +111,18 @@ def render_sidebar():
             "🔐 Investigator Login",
             "📝 Register Investigator"
         ]
+
+        if "requested_page" in st.session_state and st.session_state["requested_page"]:
+            req_p = st.session_state.pop("requested_page")
+            if req_p in public_routes:
+                st.session_state["public_page"] = req_p
+            elif req_p in [
+                "📊 Investigator Dashboard", "📁 Case Management", "📥 Data Intelligence Hub",
+                "🧬 Entity Extraction & Resolution", "🕸️ Knowledge Graph Workspace",
+                "⚠️ Investigation Insights & Timeline", "🎯 Investigation Priority Leads",
+                "💬 Ask CrimeLens (AI Assistant)", "📄 Investigation Report Generator"
+            ]:
+                st.session_state["nav_route"] = req_p
 
         if "public_page" not in st.session_state:
             st.session_state["public_page"] = "🌐 Landing Page"
@@ -125,7 +146,7 @@ def render_sidebar():
         if st.sidebar.button("⚡ 1-Click Demo Login (FIR-104)", key="btn_1click_demo_sb", use_container_width=True):
             st.session_state["authenticated_user"] = DEMO_CREDENTIALS
             st.session_state["active_case_id"] = "FIR-104"
-            st.session_state["nav_route"] = "📊 Investigator Dashboard"
+            st.session_state["requested_page"] = "📊 Investigator Dashboard"
             st.rerun()
 
         return "public", selected_public

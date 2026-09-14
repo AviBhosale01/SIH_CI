@@ -41,7 +41,7 @@ if hasattr(st, "query_params") and "page" in st.query_params:
     if qp in ["chatbot", "ask", "assistant"]:
         if "authenticated_user" not in st.session_state or not st.session_state["authenticated_user"]:
             st.session_state["authenticated_user"] = DEMO_CREDENTIALS
-        st.session_state["nav_route"] = "💬 Ask CrimeLens (AI Assistant)"
+        st.session_state["requested_page"] = "💬 Ask CrimeLens (AI Assistant)"
         try:
             st.query_params.clear()
         except Exception:

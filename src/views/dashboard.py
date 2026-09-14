@@ -105,7 +105,7 @@ def render_dashboard_view():
             with c_c2:
                 if st.button("Open Case", key=f"btn_open_case_{c['case_id']}", use_container_width=True):
                     st.session_state["active_case_id"] = c["case_id"]
-                    st.session_state["nav_route"] = "📁 Case Management"
+                    st.session_state["requested_page"] = "📁 Case Management"
                     st.rerun()
 
     with col_alerts:
