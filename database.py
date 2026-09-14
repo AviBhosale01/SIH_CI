@@ -598,6 +598,7 @@ def add_connection(s_a, s_b, rel_type, strength):
     VALUES (?, ?, ?, ?)
     """, (first, second, rel_type, strength))
     conn.commit()
+    conn.close()
 def update_suspect_details(suspect_id, name, age, gang_affiliation, priors_count, risk_score):
     """Update details of an existing suspect."""
     conn = get_connection()
