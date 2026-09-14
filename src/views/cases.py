@@ -4,6 +4,7 @@ Handles case dossier browsing, investigation overview stats, and new FIR case re
 """
 import streamlit as st
 from src.core.synthetic_data import DEMO_CASES
+from src.utils.styles import render_html
 
 def render_cases_view():
     """
@@ -44,7 +45,7 @@ def render_cases_view():
             badge_color = "#ef4444" if c["priority"] == "HIGH" else "#f59e0b"
 
             with st.container():
-                st.markdown(f"""
+                render_html(f"""
                 <div style="background: {bg_color}; border: 1px solid {border_color}; border-radius: 12px; padding: 18px; margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -56,7 +57,6 @@ def render_cases_view():
                     </div>
                     <h3 style="margin: 4px 0 8px 0; font-size: 1.25rem; color: #ffffff;">{c['title']}</h3>
                     <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.5; margin-bottom: 14px;">{c['description']}</p>
-                    
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; text-align: center; font-size: 0.85rem;">
                         <div><span style="color: #94a3b8;">Location:</span><br><b style="color: #ffffff;">{c['location']}</b></div>
                         <div><span style="color: #94a3b8;">Investigating Officer:</span><br><b style="color: #ffffff;">{c['io_name']}</b></div>
@@ -64,7 +64,7 @@ def render_cases_view():
                         <div><span style="color: #94a3b8;">Evidence Items:</span><br><b style="color: #34d399;">{c['evidence_count']}</b></div>
                     </div>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
 
                 col_btn1, col_btn2, _ = st.columns([1.5, 2, 4])
                 with col_btn1:

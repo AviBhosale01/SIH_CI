@@ -6,6 +6,7 @@ entity resolution / deduplication workspace (USP 2).
 import streamlit as st
 import pandas as pd
 from src.core.synthetic_data import DEMO_ENTITIES, DEMO_DUPLICATES
+from src.utils.styles import render_html
 
 def render_entity_resolution_view():
     """
@@ -45,7 +46,7 @@ def render_entity_resolution_view():
     df_entities_display = pd.DataFrame(table_rows)
     st.dataframe(df_entities_display, use_container_width=True, hide_index=True)
 
-    st.markdown("<br><hr style='border-top: 1px solid rgba(0, 229, 255, 0.25); margin: 20px 0;'>", unsafe_allow_html=True)
+    render_html("<br><hr style='border-top: 1px solid rgba(0, 229, 255, 0.25); margin: 20px 0;'>")
 
     # 2. BOTTOM SECTION: ENTITY RESOLUTION & DEDUPLICATION (USP 2)
     st.markdown("### 🔍 Entity Resolution & Discrepancy Matching (USP 02)")
@@ -63,7 +64,7 @@ def render_entity_resolution_view():
             "<span style='background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; padding: 4px 12px; border-radius: 6px; font-weight: 800;'>⚠️ MATCH CANDIDATE PENDING REVIEW</span>"
         )
 
-        st.markdown(f"""
+        render_html(f"""
         <div style="background: rgba(13, 21, 39, 0.90); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 14px; padding: 22px; margin-bottom: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
@@ -120,7 +121,7 @@ def render_entity_resolution_view():
                 </div>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         col_act1, col_act2, _ = st.columns([1.8, 1.5, 4])
         with col_act1:
@@ -135,11 +136,11 @@ def render_entity_resolution_view():
                 st.rerun()
 
         if status == "CONFIRMED":
-            st.markdown("""
+            render_html("""
             <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 8px; padding: 14px; margin-top: 10px;">
                 <b style="color: #34d399;">Unified Entity State:</b><br>
                 All references in Case <b>FIR-104</b>, <b>FIR-087</b>, and CDR logs are now mapped to 
                 <span style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #00e5ff;">ENT-001 [Rahul Sharma]</span>. 
                 Investigation Knowledge Graph automatically synchronizes edges.
             </div>
-            """, unsafe_allow_html=True)
+            """)

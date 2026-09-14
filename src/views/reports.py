@@ -6,6 +6,7 @@ and downloadable formal investigation reports.
 import streamlit as st
 from datetime import datetime
 from src.core.synthetic_data import DEMO_CASES, DEMO_PRIORITY_LEADS, DEMO_CROSS_CASE_INSIGHTS
+from src.utils.styles import render_html
 
 def generate_report_text(case_id: str, investigator_name: str, badge_id: str):
     """Generate structured police intelligence report markdown string."""
@@ -94,7 +95,7 @@ def render_reports_view():
             index=0 if active_case_id not in [c["case_id"] for c in DEMO_CASES] else [c["case_id"] for c in DEMO_CASES].index(active_case_id)
         )
     with col_c2:
-        st.markdown("<div style='padding-top: 28px;'></div>", unsafe_allow_html=True)
+        render_html("<div style='padding-top: 28px;'></div>")
         generate_btn = st.button("⚡ Compile Structured Intelligence Report", key="btn_gen_report", use_container_width=True)
 
     report_content = generate_report_text(selected_rep_case, user_name, badge_id)

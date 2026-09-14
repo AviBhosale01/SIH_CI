@@ -6,6 +6,7 @@ and LLM synthesis with strict evidence citations.
 import streamlit as st
 from datetime import datetime
 from src.core.synthetic_data import DEMO_CASES, DEMO_ENTITIES, DEMO_CROSS_CASE_INSIGHTS
+from src.utils.styles import render_html
 
 def get_rule_based_answer(query_text: str):
     """
@@ -106,7 +107,7 @@ def render_chatbot_view():
         if st.button("💳 Show unusual financial connections", key="chip_q3", use_container_width=True):
             clicked_query = "Show unusual financial connections between suspects."
 
-    st.markdown("<br>", unsafe_allow_html=True)
+    render_html("<br>")
 
     # Render previous conversation history
     for msg in st.session_state["chat_history"]:

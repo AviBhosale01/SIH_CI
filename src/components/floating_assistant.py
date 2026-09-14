@@ -1,9 +1,7 @@
-"""
-Floating 3D Police Assistant Widget Component
-"""
 import streamlit as st
 import os
 import base64
+from src.utils.styles import render_html
 
 def render_floating_assistant(selected_page: str):
     """
@@ -15,8 +13,8 @@ def render_floating_assistant(selected_page: str):
         with open(police_icon_path, "rb") as img_f:
             police_icon_b64 = base64.b64encode(img_f.read()).decode("utf-8")
 
-    if police_icon_b64 and selected_page != "💬 AI Intel Chatbot":
-        st.markdown(f"""
+    if police_icon_b64 and "Ask CrimeLens" not in selected_page and "Chatbot" not in selected_page:
+        render_html(f"""
         <style>
         #floating-police-assistant-wrapper {{
             position: fixed !important;
@@ -97,4 +95,4 @@ def render_floating_assistant(selected_page: str):
                 <span id="floating-ai-badge">AI</span>
             </a>
         </div>
-        """, unsafe_allow_html=True)
+        """)

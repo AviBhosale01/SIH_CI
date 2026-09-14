@@ -8,7 +8,7 @@ def apply_custom_styles():
     Inject modern cybersecurity / police intelligence dark theme CSS,
     neon cyan accents, subtle glowing nodes, and clean responsive layouts.
     """
-    st.markdown("""
+    render_html("""
     <head>
         <meta name="description" content="CrimeLens: AI-Assisted Crime Intelligence & Investigation Support Platform">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -217,4 +217,18 @@ def apply_custom_styles():
             border-bottom: 2px solid #00e5ff !important;
         }
     </style>
-    """, unsafe_allow_html=True)
+    """)
+
+
+def render_html(html_str: str, sidebar: bool = False):
+    """
+    Renders HTML safely in Streamlit by stripping all leading/trailing whitespace
+    and joining lines into a single clean string, guaranteeing the Markdown parser
+    never mistakes indented HTML for a preformatted code block.
+    """
+    clean_html = " ".join(line.strip() for line in html_str.splitlines() if line.strip())
+    if sidebar:
+        st.sidebar.markdown(clean_html, unsafe_allow_html=True)
+    else:
+        st.markdown(clean_html, unsafe_allow_html=True)
+

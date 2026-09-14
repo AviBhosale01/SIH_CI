@@ -4,6 +4,7 @@ Ranks suspect leads using transparent, defensible scoring factors (USP 6).
 """
 import streamlit as st
 from src.core.synthetic_data import DEMO_PRIORITY_LEADS
+from src.utils.styles import render_html
 
 def render_priority_view():
     """
@@ -14,7 +15,7 @@ def render_priority_view():
     st.write("Prioritizes persons of interest, suspect vehicles, and communication nodes based on transparent multi-factor network connectivity rather than opaque black-box scoring.")
 
     # Statutory Disclaimer Banner
-    st.markdown("""
+    render_html("""
     <div style="background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); border-left-width: 4px; border-radius: 8px; padding: 14px 18px; margin-bottom: 25px;">
         <div style="font-weight: 800; color: #fbbf24; font-size: 0.95rem; margin-bottom: 4px;">
             ⚖️ STATUTORY INVESTIGATION DISCLAIMER
@@ -24,7 +25,7 @@ def render_priority_view():
             <b>This score does NOT constitute proof of guilt, criminality, or probable cause.</b> Final determination rests solely with judicial and sworn police authorities.
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # Lead Cards
     for lead in DEMO_PRIORITY_LEADS:
@@ -33,7 +34,7 @@ def render_priority_view():
         bd = lead["breakdown"]
 
         with st.container():
-            st.markdown(f"""
+            render_html(f"""
             <div style="background: rgba(13, 21, 39, 0.9); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 14px; padding: 22px; margin-bottom: 22px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
                     <div style="display: flex; align-items: center; gap: 12px;">
@@ -96,4 +97,4 @@ def render_priority_view():
                     </div>
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """)

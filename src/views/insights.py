@@ -5,6 +5,7 @@ financial correlations, and 72-hour incident timelines.
 """
 import streamlit as st
 from src.core.synthetic_data import DEMO_CROSS_CASE_INSIGHTS, DEMO_TIMELINE
+from src.utils.styles import render_html
 
 def render_insights_view():
     """
@@ -27,7 +28,7 @@ def render_insights_view():
             badge_col = "#ef4444" if is_critical else "#f59e0b"
 
             with st.container():
-                st.markdown(f"""
+                render_html(f"""
                 <div style="background: {bg_col}; border: 1px solid {border_col}; border-radius: 12px; padding: 20px; margin-bottom: 18px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -59,25 +60,25 @@ def render_insights_view():
                         </div>
                     </div>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
 
     with tab_timeline:
         st.markdown("### 📅 72-Hour Temporal Incident Timeline")
         st.write("Chronological sequence of physical movements, telecommunications, and financial transactions leading up to and immediately following the incident:")
 
-        st.markdown("""
+        render_html("""
         <div style="background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px;">
             <b style="color: #00e5ff;">⚡ Temporal Cluster Insight:</b>
             <span style="color: #cbd5e1; font-size: 0.88rem;">
                 Four interconnected investigative events occurred within a concentrated <b>72-hour window</b> (Aug 10 to Aug 13, 2026), indicating deliberate coordination between prime suspect and transport associate.
             </span>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         for step_idx, step in enumerate(DEMO_TIMELINE):
             b_color = "#f59e0b" if step["type"] == "vehicle" else ("#10b981" if step["type"] == "cdr" else ("#ef4444" if step["type"] == "fir" else "#06b6d4"))
 
-            st.markdown(f"""
+            render_html(f"""
             <div style="display: flex; gap: 16px; margin-bottom: 18px; position: relative;">
                 <div style="display: flex; flex-direction: column; align-items: center;">
                     <div style="width: 32px; height: 32px; border-radius: 50%; background: {b_color}; color: #0a0f1d; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; box-shadow: 0 0 12px {b_color};">
@@ -98,4 +99,4 @@ def render_insights_view():
                     </div>
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """)

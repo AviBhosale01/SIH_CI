@@ -9,6 +9,7 @@ import numpy as np
 import plotly.graph_objects as go
 import networkx as nx
 from src.core.synthetic_data import DEMO_ENTITIES, DEMO_CASES
+from src.utils.styles import render_html
 
 def render_knowledge_graph_view():
     """
@@ -21,7 +22,7 @@ def render_knowledge_graph_view():
     active_case_id = st.session_state.get("active_case_id", "FIR-104")
 
     # 1. IN-GRAPH QUERY SEARCH BAR ("Ask on the Spot")
-    st.markdown("""
+    render_html("""
     <div style="background: rgba(13, 21, 39, 0.85); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
         <div style="font-size: 0.85rem; font-weight: 800; color: #00e5ff; text-transform: uppercase; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">
             🔍 In-Graph Evidence Query &amp; Reasoning
@@ -30,7 +31,7 @@ def render_knowledge_graph_view():
             Ask questions directly about entities, cross-case connections, or transactions:
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     q_col1, q_col2, q_col3 = st.columns(3)
     preset_query = None
@@ -47,7 +48,7 @@ def render_knowledge_graph_view():
     custom_graph_search = st.text_input("Or enter an investigation query...", placeholder="e.g. How is Rahul Sharma connected to Case 087?", key="txt_graph_query")
 
     if preset_query == "connections_rahul" or "rahul" in custom_graph_search.lower():
-        st.markdown("""
+        render_html("""
         <div style="background: rgba(0, 229, 255, 0.08); border-left: 4px solid #00e5ff; border: 1px solid rgba(0, 229, 255, 0.3); border-left-width: 4px; border-radius: 8px; padding: 16px; margin-bottom: 18px;">
             <div style="font-weight: 800; color: #00e5ff; font-size: 1.05rem; margin-bottom: 8px;">
                 Investigation Result: Rahul Sharma (ENT-001) has 4 primary verified connections
@@ -59,10 +60,10 @@ def render_knowledge_graph_view():
                 4. 📁 <b>Case FIR-087 (Swargate)</b> — Cross-case linkage via vehicle presence at warehouse burglary <i>[Evidence: FIR-087 / CCTV]</i>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     elif preset_query == "cross_case_104_087" or ("104" in custom_graph_search and "087" in custom_graph_search):
-        st.markdown("""
+        render_html("""
         <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; border: 1px solid rgba(239, 68, 68, 0.35); border-left-width: 4px; border-radius: 8px; padding: 16px; margin-bottom: 18px;">
             <div style="font-weight: 800; color: #f87171; font-size: 1.05rem; margin-bottom: 8px;">
                 🚨 Critical Cross-Case Connection Detected: Case FIR-104 ⟷ Case FIR-087
@@ -75,10 +76,10 @@ def render_knowledge_graph_view():
                 <b>Evidence Audit Trail:</b> <span style="color: #00e5ff; font-family: 'JetBrains Mono', monospace;">[FIR-104] [FIR-087] [VEH-019] [ANPR-SWG-04]</span>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     elif preset_query == "unusual_finances" or "transaction" in custom_graph_search.lower() or "financial" in custom_graph_search.lower():
-        st.markdown("""
+        render_html("""
         <div style="background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); border-left-width: 4px; border-radius: 8px; padding: 16px; margin-bottom: 18px;">
             <div style="font-weight: 800; color: #fbbf24; font-size: 1.05rem; margin-bottom: 8px;">
                 ⚠️ Suspicious Financial Event: TXN-203 (₹75,000 Payout)
@@ -90,7 +91,7 @@ def render_knowledge_graph_view():
                 <b>Evidence Audit Trail:</b> <span style="color: #00e5ff; font-family: 'JetBrains Mono', monospace;">[FIN-203] [HDFC-STMT-992]</span>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     # 2. GRAPH FILTERS & CONTROLS
     st.markdown("##### ⚙️ Graph Filtering & Scope")
@@ -234,7 +235,7 @@ def render_knowledge_graph_view():
         e_type = sel_entity.get("type", "PERSON")
         e_color = "#3b82f6" if e_type == "PERSON" else ("#f59e0b" if e_type == "VEHICLE" else "#10b981")
 
-        st.markdown(f"""
+        render_html(f"""
         <div style="background: rgba(13, 21, 39, 0.9); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 12px; padding: 16px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <span style="background: {e_color}22; color: {e_color}; border: 1px solid {e_color}; font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace;">{e_type}</span>
@@ -261,4 +262,4 @@ def render_knowledge_graph_view():
                 </div>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)

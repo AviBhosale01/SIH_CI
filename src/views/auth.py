@@ -4,13 +4,14 @@ Handles secure login, investigator profile creation, badge verification, and 1-c
 """
 import streamlit as st
 from src.core.config import DEMO_CREDENTIALS
+from src.utils.styles import render_html
 
 def render_login_view():
     """
     Render Investigator Login screen with credentials validation,
     1-Click Demo Login, and Forgot Password recovery.
     """
-    st.markdown("""
+    render_html("""
     <div style="max-width: 540px; margin: 0 auto 20px auto; text-align: center;">
         <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #00e5ff, #1d4ed8); font-size: 1.5rem; margin-bottom: 12px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);">
             🔐
@@ -20,20 +21,20 @@ def render_login_view():
             Authorized Law Enforcement &amp; Detective Branch Personnel Only
         </p>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     col_wrap1, col_form, col_wrap2 = st.columns([1, 2, 1])
 
     with col_form:
         # Fast 1-Click Demo Box
-        st.markdown("""
+        render_html("""
         <div style="background: rgba(0, 229, 255, 0.08); border: 1px dashed rgba(0, 229, 255, 0.4); border-radius: 10px; padding: 14px; margin-bottom: 20px; text-align: center;">
             <div style="font-size: 0.8rem; color: #00e5ff; font-weight: 800; text-transform: uppercase;">🚀 Rapid Evaluation Access</div>
             <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 4px;">
                 Authenticate immediately with pre-configured credentials for Lead Investigator <b>PI Vikram Patil</b>.
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         if st.button("⚡ 1-Click Demo Login", key="btn_quick_demo_login", use_container_width=True):
             st.session_state["authenticated_user"] = DEMO_CREDENTIALS
@@ -42,7 +43,7 @@ def render_login_view():
             st.success("Authenticated as PI Vikram Patil (Badge: MH-PN-4082)!")
             st.rerun()
 
-        st.markdown("<div style='text-align: center; color: #64748b; font-size: 0.85rem; margin: 15px 0;'>— OR LOGIN MANUALLY —</div>", unsafe_allow_html=True)
+        render_html("<div style='text-align: center; color: #64748b; font-size: 0.85rem; margin: 15px 0;'>— OR LOGIN MANUALLY —</div>")
 
         with st.form("form_investigator_login"):
             email_input = st.text_input("Official Email ID", value="investigator@crimelens.demo", placeholder="investigator@police.gov.in")
@@ -66,7 +67,7 @@ def render_login_view():
                 else:
                     st.error("Invalid credentials. Use demo: investigator@crimelens.demo / demo123")
 
-        st.markdown("<br>", unsafe_allow_html=True)
+        render_html("<br>")
         col_sub1, col_sub2 = st.columns(2)
         with col_sub1:
             if st.button("📝 Register New Profile", key="btn_goto_register", use_container_width=True):
@@ -90,7 +91,7 @@ def render_register_view():
     Render Investigator Registration page collecting official credentials,
     department affiliation, badge verification, and document upload.
     """
-    st.markdown("""
+    render_html("""
     <div style="max-width: 640px; margin: 0 auto 20px auto; text-align: center;">
         <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #00e5ff, #1d4ed8); font-size: 1.5rem; margin-bottom: 12px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);">
             📝
@@ -100,7 +101,7 @@ def render_register_view():
             Law Enforcement Agency &amp; Cyber Cell Clearance Portal
         </p>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     col_wrap1, col_reg, col_wrap2 = st.columns([1, 2.5, 1])
 
@@ -133,7 +134,7 @@ def render_register_view():
             if r_doc:
                 st.caption(f"✓ Attached: {r_doc.name} ({r_doc.size / 1024:.1f} KB) — Department Document Verified")
 
-            st.markdown("<hr style='border-top: 1px solid rgba(75, 85, 99, 0.3); margin: 15px 0;'>", unsafe_allow_html=True)
+            render_html("<hr style='border-top: 1px solid rgba(75, 85, 99, 0.3); margin: 15px 0;'>")
 
             p_col1, p_col2 = st.columns(2)
             with p_col1:
@@ -163,7 +164,7 @@ def render_register_view():
                     st.success("Account created successfully! Investigator profile registered. Redirecting to Dashboard...")
                     st.rerun()
 
-        st.markdown("<br>", unsafe_allow_html=True)
+        render_html("<br>")
         col_b1, col_b2 = st.columns(2)
         with col_b1:
             if st.button("🔐 Already Registered? Login", key="btn_goto_login_from_reg", use_container_width=True):
