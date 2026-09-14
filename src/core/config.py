@@ -1,72 +1,52 @@
 import streamlit as st
 import os
 
-# Security passkeys configuration
-INTEL_ENTRY_KEY = None
-VIEW_DATA_KEY = None
-NEWS_API_KEY = 'a2a5fc4ec79447288f2589520a64c8e5'
+# Application Identity & Branding
+PAGE_TITLE = "CrimeLens — Crime Intelligence & Investigation Platform"
+PAGE_ICON = "🔍"
+TAGLINE = "Connect Evidence. Reveal Relationships. Accelerate Investigations."
 
-try:
-    import config_keys
-    INTEL_ENTRY_KEY = getattr(config_keys, 'INTEL_ENTRY_KEY', None)
-    VIEW_DATA_KEY = getattr(config_keys, 'VIEW_DATA_KEY', None)
-    if hasattr(config_keys, 'NEWS_API_KEY') and config_keys.NEWS_API_KEY:
-        NEWS_API_KEY = config_keys.NEWS_API_KEY
-except ImportError:
-    pass
+# Default Demo Investigator Credentials
+DEMO_CREDENTIALS = {
+    "email": "investigator@crimelens.demo",
+    "password": "demo123",
+    "name": "PI Vikram Patil",
+    "department": "Pune City Police — Crime Branch Unit 2",
+    "designation": "Police Inspector / Lead Investigator",
+    "badge_id": "MH-PN-4082"
+}
 
-if not INTEL_ENTRY_KEY:
-    try:
-        INTEL_ENTRY_KEY = st.secrets.get('INTEL_ENTRY_KEY', None)
-    except Exception:
-        INTEL_ENTRY_KEY = None
-
-if not VIEW_DATA_KEY:
-    try:
-        VIEW_DATA_KEY = st.secrets.get('VIEW_DATA_KEY', None)
-    except Exception:
-        VIEW_DATA_KEY = None
-
-try:
-    secret_news_key = st.secrets.get('NEWS_API_KEY', None)
-    if secret_news_key:
-        NEWS_API_KEY = secret_news_key
-except Exception:
-    pass
-
-# Application Constants
-PAGE_TITLE = 'AI-Driven Crime Analytics Platform'
-PAGE_ICON = '🛡️'
-
-CRIME_TYPES = [
-    'Theft', 'Assault', 'Burglary', 'Robbery', 'Narcotics', 
-    'Fraud', 'Homicide', 'Vandalism', 'Extortion', 'Cybercrime'
+# Supported Data Types for Data Intelligence Hub
+DATA_SOURCES = [
+    {"type": "FIR", "icon": "📄", "desc": "First Information Reports & Police Complaints"},
+    {"type": "CDR", "icon": "📱", "desc": "Call Detail Records & Cell Tower Logs"},
+    {"type": "FINANCIAL", "icon": "💳", "desc": "Bank Transfers, UPI & Account Statements"},
+    {"type": "VEHICLE", "icon": "🚗", "desc": "RTO Records, CCTV & ANPR Sightings"},
+    {"type": "INTELLIGENCE", "icon": "🕵️", "desc": "Informant Notes & Station Memos"}
 ]
 
-SEVERITY_LEVELS = ['Low', 'Medium', 'High']
-INVESTIGATION_STATUSES = ['Open', 'In Investigation', 'Closed']
-RELATION_TYPES = ['Accomplice', 'Co-arrestee', 'Gang Member', 'Relative']
+# Entity Classifications & Visual Badges
+ENTITY_TYPES = {
+    "PERSON": {"color": "#3b82f6", "icon": "👤", "label": "Person / Suspect"},
+    "VEHICLE": {"color": "#f59e0b", "icon": "🚗", "label": "Vehicle"},
+    "PHONE": {"color": "#10b981", "icon": "📱", "label": "Phone / SIM"},
+    "LOCATION": {"color": "#8b5cf6", "icon": "📍", "label": "Location / Scene"},
+    "CASE": {"color": "#ef4444", "icon": "📁", "label": "Crime Case / FIR"},
+    "TRANSACTION": {"color": "#06b6d4", "icon": "💳", "label": "Financial Transaction"},
+    "ORGANIZATION": {"color": "#ec4899", "icon": "🏢", "label": "Gang / Entity Group"}
+}
 
-PUNE_DISTRICTS = [
-    'Shivajinagar', 'Kothrud', 'Viman Nagar', 'Hinjawadi',
-    'Koregaon Park', 'Hadapsar', 'Katraj', 'Swargate'
-]
-
-KNOWN_GANG_SYNDICATES = [
-    'None', 'Pune Local Boys', 'Shivaji Nagar Syndicate',
-    'Koregaon Park Cartel', 'Hinjawadi Hackers', 'D-Company Gang', 'Chhota Rajan Gang'
-]
-
-# Theme Colors & UI Palette
+# Theme Colors & UI Palette (Cybersecurity Dark Theme)
 THEME = {
-    'bg_primary': '#0b0f19',
-    'bg_card': 'rgba(17, 24, 39, 0.85)',
-    'border_glow': 'rgba(59, 130, 246, 0.3)',
-    'accent_blue': '#3b82f6',
-    'accent_cyan': '#06b6d4',
-    'danger_red': '#ef4444',
-    'warning_amber': '#f59e0b',
-    'success_emerald': '#10b981',
-    'text_primary': '#ffffff',
-    'text_muted': '#cbd5e1'
+    "bg_primary": "#0a0f1d",
+    "bg_secondary": "#0f172a",
+    "bg_card": "rgba(17, 24, 39, 0.90)",
+    "border_glow": "rgba(0, 229, 255, 0.35)",
+    "accent_cyan": "#00e5ff",
+    "accent_blue": "#3b82f6",
+    "danger_red": "#ef4444",
+    "warning_amber": "#f59e0b",
+    "success_emerald": "#10b981",
+    "text_primary": "#ffffff",
+    "text_muted": "#94a3b8"
 }

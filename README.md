@@ -1,205 +1,103 @@
-# 🛡️ Pune Crime Intelligence Command Center (PCICC)
+# 🔍 CrimeLens — AI-Assisted Crime Intelligence & Investigation Support Platform
 
 <div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=Streamlit&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/scikit_learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google-gemini&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![NewsAPI](https://img.shields.io/badge/NewsAPI-000000?style=flat-square&logo=newspaper&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square)
-![Version](https://img.shields.io/badge/Version-v2.5.0-blue?style=flat-square)
+![NetworkX](https://img.shields.io/badge/NetworkX-000000?style=flat-square&logo=python&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Law_Enforcement_Grade-brightgreen?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Operational_Prototype-00e5ff?style=flat-square)
+![Hackathon](https://img.shields.io/badge/SIH-Smart_India_Hackathon-blue?style=flat-square)
 
-An enterprise-grade, AI-powered Geospatial Analytics, Suspect Risk Profiling, Decision-Support System, and Criminal Social Network Linkage platform built specifically for **Pune, Maharashtra, India**.
+### **Connect Evidence. Reveal Relationships. Accelerate Investigations.**
 
-[Live Demo Application](https://avibhosale01-crime-project-app-cgmphi.streamlit.app) • [Report Bug](https://github.com/AviBhosale01/SIH_CI/issues) • [Request Feature](https://github.com/AviBhosale01/SIH_CI/issues)
+*CrimeLens brings fragmented crime records into a unified, explainable investigation workspace — helping detective branches, cyber cells, and station supervisory officers uncover hidden connections, resolve duplicate identities, and prioritize actionable leads.*
 
-</div>
-
----
-
-## ⚡ Tech Stack & Technologies
-
-<div align="center">
-
-| Category | Tech Stack Badges |
-| :--- | :--- |
-| **Core & UI** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
-| **Machine Learning & AI** | ![Scikit-Learn](https://img.shields.io/badge/scikit_learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) ![Google Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=google-gemini&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white) ![NetworkX](https://img.shields.io/badge/NetworkX-000000?style=flat-square&logo=python&logoColor=white) |
-| **Geospatial & Data** | ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) ![NewsAPI](https://img.shields.io/badge/NewsAPI-000000?style=flat-square&logo=newspaper&logoColor=white) |
-| **Reporting & Exports** | ![ReportLab](https://img.shields.io/badge/PDF_Export-ReportLab-red?style=flat-square) ![OpenPyXL](https://img.shields.io/badge/Excel_Export-OpenPyXL-green?style=flat-square) ![PNG](https://img.shields.io/badge/Image_Export-Matplotlib-blue?style=flat-square) |
+[Repository](https://github.com/AviBhosale01/SIH_CI) • [Report Issue](https://github.com/AviBhosale01/SIH_CI/issues)
 
 </div>
 
 ---
 
-## 🌟 Key Platform Features
+## ⚡ Core Philosophy & Application Flow
 
-*   **📊 Command Dashboard**: Real-time KPI indicators showcasing active crime metrics, DBSCAN-generated hotspots, high-risk recidivists, and daily anomaly spikes (Z-score analysis).
-*   **🚓 Tactical Patrol Unit (PCR) Allocation Optimizer**: Proportional risk-weighted decision-support system that optimizes $N$ active patrol vans across Pune sectors to maximize coverage and minimize response times.
-*   **🗺️ Geospatial Intelligence Map**: Plotly Mapbox maps centered on Pune showing crime distribution. Includes DBSCAN clustering layers and centroid markers displaying hotspot names and crime counts.
-*   **🔍 Intelligence Explorer & Search**: Search directory supporting text-filtering over **2,050 suspects** and **3,000+ crime logs**. Features a detailed. **Suspect Dossier Inspector** linking biographical indicators and incident timelines.
-*   **🧠 AI Predictive Models**:
-    *   *Incident Severity Predictor*: Random Forest Classifier evaluating spatio-temporal and socio-economic variables with out-of-sample confusion matrices and 5-fold cross-validation.
-    *   *Recidivism Risk Forecaster*: Random Forest Regressor predicting repeat offender risk scores with $R^2$, MAE, and RMSE evaluation metrics.
-    *   *Socio-Economic Correlation*: Interactive Pearson ($r$) and Spearman ($\rho$) correlation matrices tracking crime density vs. poverty and unemployment.
-    *   *Dual Anomaly Detector*: Combines 14-day rolling statistical Z-score thresholding with Isolation Forest ML anomaly detection.
-*   **🕸️ Criminal Network Link Analysis**: Interactive social network visualization of suspect cliques. Employs NetworkX centrality scores to identify gang hubs (degree centrality) and bridge figures (betweenness centrality).
-*   **🤖 AI Officer Briefing Generator**: Auto-generates formal natural language police intelligence briefings for tracked suspects and cases.
-*   **📰 Live OSINT Crime News & AI News Analyst**: Fetches live real-time crime news via **NewsAPI**, supporting custom topic searches, quick filter chips, and an interactive AI News Analyst Chatbot.
-*   **💬 Universal Text-to-SQL Chatbot**: Conversational interface supporting **Gemini, OpenAI, OpenRouter, Groq, and NVIDIA NIM**. Auto-translates questions into read-only SQLite code, queries the database, and summarizes results contextually.
-*   **📝 CRUD Intel Entry (Passkey Locked)**: Form validation interfaces to log crime incidents, register new suspects, and model criminal connections.
-*   **📂 View Data Explorer & Editor (Passkey Locked)**: Direct database editor supporting multi-format downloads (Excel `.xlsx`, PDF, CSV, PNG images).
-
----
-
-## 🔒 Security & Engine-Level Guardrails
-
-> [!IMPORTANT]
-> **Read-Only SQLite Engine Security**: The AI Chatbot executes queries using a strict read-only URI connection (`file:{path}?mode=ro`, `uri=True`). Any modification attempts (`DROP`, `DELETE`, `UPDATE`) are rejected directly at the SQLite engine level.
-
-Access to admin forms and raw database tables is protected via security passkey gates:
-
-| Page / Action | Environment / Secret Key | Configuration Method |
-| :--- | :--- | :--- |
-| **📝 Intel Entry (CRUD)** | `INTEL_ENTRY_KEY` | Set in `.streamlit/secrets.toml` or `config_keys.py` |
-| **📂 View Data (Explorer)** | `VIEW_DATA_KEY` | Set in `.streamlit/secrets.toml` or `config_keys.py` |
-
----
-
-## 📋 Relational Database Architecture & Schema Specification
-
-### 🌳 Structural Relationship Tree
-```
-crime_analytics.db
-├── 🏙️ districts (Socio-Economic Sector Baselines)
-│   └── 🔗 1:N ──► ⚠️ crimes (Historical Incident Logs)
-└── 👤 suspects (Criminal Registry & Risk Profiles)
-    ├── 🔗 1:N ──► ⚠️ crimes (Linked Incident Offenses)
-    └── 🔗 M:N ──► 🕸️ suspect_connections (Social Link Analysis)
-```
-
-### 🔀 Entity-Relationship Diagram (ERD)
+$$\textbf{Connect} \longrightarrow \textbf{Analyze} \longrightarrow \textbf{Visualize} \longrightarrow \textbf{Investigate}$$
 
 ```mermaid
-erDiagram
-    DISTRICTS ||--o{ CRIMES : "contains (1:N)"
-    SUSPECTS ||--o{ CRIMES : "committed by (1:N)"
-    SUSPECTS ||--o{ SUSPECT_CONNECTIONS : "originates link (1:N)"
-    SUSPECTS ||--o{ SUSPECT_CONNECTIONS : "receives link (1:N)"
-
-    DISTRICTS {
-        INTEGER id PK "Auto Increment"
-        TEXT name UK "Pune Sector Name"
-        REAL unemployment_rate "Unemployment %"
-        REAL poverty_index "Poverty Index (0-1)"
-        REAL median_income "Annual Median Income (₹)"
-        REAL education_index "Education Index (0-1)"
-        REAL population_density "Per Sq Km Density"
-        REAL center_lat "Latitude Coordinate"
-        REAL center_lon "Longitude Coordinate"
-    }
-
-    SUSPECTS {
-        INTEGER id PK "Auto Increment"
-        TEXT name "Full Offender Name"
-        INTEGER age "Current Age"
-        TEXT gang_affiliation "Syndicate / Network Name"
-        INTEGER priors_count "Prior Arrest Record Count"
-        REAL risk_score "Recidivism Risk Index (0-1)"
-    }
-
-    CRIMES {
-        INTEGER id PK "Auto Increment"
-        TEXT timestamp "YYYY-MM-DD HH:MM:SS"
-        INTEGER district_id FK "References districts.id"
-        TEXT crime_type "Category (Theft, Homicide, etc.)"
-        TEXT severity "Low / Medium / High"
-        REAL latitude "GIS Latitude Coordinate"
-        REAL longitude "GIS Longitude Coordinate"
-        TEXT status "Open / In Investigation / Closed"
-        INTEGER suspect_id FK "References suspects.id"
-    }
-
-    SUSPECT_CONNECTIONS {
-        INTEGER suspect_a PK,FK "References suspects.id"
-        INTEGER suspect_b PK,FK "References suspects.id"
-        TEXT relation_type "Gang Member / Accomplice / Relative"
-        INTEGER strength "Link Weight Intensity (1-5)"
-    }
+flowchart TD
+    LANDING["🌐 LANDING PAGE<br/>(Hero, 6 Demonstrable USPs, Architecture)"] --> AUTH{"Authentication Gateway"}
+    AUTH -->|"Register"| REG["📝 INVESTIGATOR REGISTRATION<br/>(Badge ID, Department, Doc Verification)"]
+    AUTH -->|"1-Click Demo"| LOGIN["🔐 INVESTIGATOR LOGIN<br/>(investigator@crimelens.demo / demo123)"]
+    REG --> LOGIN
+    LOGIN --> DASH["📊 INVESTIGATOR DASHBOARD<br/>(Active Cases, Connected Entities, Alerts)"]
+    
+    DASH --> CASES["📁 CASE MANAGEMENT<br/>(Select Case FIR-104 / Register New FIR)"]
+    CASES --> HUB["📥 DATA INTELLIGENCE HUB<br/>(FIR, CDR, Vehicle, Finance, Intel Ingestion)"]
+    HUB --> ENT["🧬 ENTITY EXTRACTION & RESOLUTION<br/>(Fuzzy Phonetic Matching 97% ➔ ENT-001)"]
+    ENT --> GRAPH["🕸️ KNOWLEDGE GRAPH WORKSPACE<br/>(Multi-Entity Nodes, Side Dossiers, Quick Search)"]
+    GRAPH --> INSIGHTS["⚠️ INVESTIGATION INSIGHTS & TIMELINE<br/>(Cross-Case Link: MH12AB1234, 72h Timeline)"]
+    INSIGHTS --> PRIORITY["🎯 INVESTIGATION PRIORITY LEADS<br/>(Transparent 87/100 Breakdown & Legal Disclaimer)"]
+    PRIORITY --> CHAT["💬 ASK CRIMELENS (AI ASSISTANT)<br/>(Evidence-Backed Natural Language Querying)"]
+    CHAT --> REPORT["📄 INVESTIGATION REPORT GENERATOR<br/>(Structured Police Dossier Export)"]
 ```
-
-### 📊 Comprehensive Database Table Specifications
-
-#### 1. `districts` Table (Pune Sector Demographics)
-| Column Name | Data Type | Constraint | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `INTEGER` | `PRIMARY KEY AUTOINCREMENT` | Sector unique identifier |
-| `name` | `TEXT` | `UNIQUE NOT NULL` | Sector name (e.g. Hinjawadi, Kothrud, Koregaon Park) |
-| `unemployment_rate` | `REAL` | `NOT NULL` | Local unemployment rate percentage |
-| `poverty_index` | `REAL` | `NOT NULL` | Normalized poverty index score ($0.0 - 1.0$) |
-| `median_income` | `REAL` | `NOT NULL` | Annual household median income in INR (₹) |
-| `education_index` | `REAL` | `NOT NULL` | Literacy and education index score ($0.0 - 1.0$) |
-| `population_density` | `REAL` | `NOT NULL` | Population per square kilometer |
-| `center_lat` / `center_lon` | `REAL` | `NOT NULL` | Geographic centroid coordinates for GIS mapping |
-
-#### 2. `suspects` Table (Criminal Registry & Risk Profiles)
-| Column Name | Data Type | Constraint | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `INTEGER` | `PRIMARY KEY AUTOINCREMENT` | Suspect unique registration ID |
-| `name` | `TEXT` | `NOT NULL` | Full legal name of suspect |
-| `age` | `INTEGER` | `NOT NULL` | Offender age |
-| `gang_affiliation` | `TEXT` | `NOT NULL` | Fictional crime syndicate affiliation |
-| `priors_count` | `INTEGER` | `NOT NULL` | Number of verified prior arrest records |
-| `risk_score` | `REAL` | `NOT NULL` | Calculated Recidivism Risk Index ($0.10 - 0.95$) |
-
-#### 3. `crimes` Table (Incident Logs)
-| Column Name | Data Type | Constraint | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `INTEGER` | `PRIMARY KEY AUTOINCREMENT` | Incident log unique identifier |
-| `timestamp` | `TEXT` | `NOT NULL` | ISO timestamp of offense occurrence |
-| `district_id` | `INTEGER` | `FOREIGN KEY (districts.id)` | Sector location foreign key link |
-| `crime_type` | `TEXT` | `NOT NULL` | Category (Theft, Burglary, Homicide, Narcotics, etc.) |
-| `severity` | `TEXT` | `NOT NULL` | Probabilistic severity rating (Low, Medium, High) |
-| `latitude` / `longitude` | `REAL` | `NOT NULL` | Exact GPS incident coordinates |
-| `status` | `TEXT` | `NOT NULL` | Case status (Open, In Investigation, Closed) |
-| `suspect_id` | `INTEGER` | `FOREIGN KEY (suspects.id)` | Optional linked primary suspect ID |
-
-#### 4. `suspect_connections` Table (Network Link Analysis)
-| Column Name | Data Type | Constraint | Description |
-| :--- | :--- | :--- | :--- |
-| `suspect_a` | `INTEGER` | `PRIMARY KEY, FOREIGN KEY` | Originating suspect ID |
-| `suspect_b` | `INTEGER` | `PRIMARY KEY, FOREIGN KEY` | Associated suspect ID |
-| `relation_type` | `TEXT` | `NOT NULL` | Relationship classification (Gang Member, Accomplice, Relative) |
-| `strength` | `INTEGER` | `NOT NULL` | Connection weight intensity ($1 - 5$) |
 
 ---
 
-## 📁 Repository & Modular Architecture Structure
+## 🌟 Six Core Demonstrable USPs
 
-```text
-├── app.py                      # Application Orchestrator & Router Entry Point
-├── database.py                 # Core SQLite Database Driver & CRUD Methods
-├── analytics.py                # Machine Learning, Predictive & Statistical Models
-├── visualizations.py           # Plotly Interactive Charting & NetworkX Visuals
-├── requirements.txt            # Python Dependencies Specification
-├── crime_analytics.db          # Embedded SQLite Relational Database Engine
-└── src/                        # Full-Stack Modular Source Directory
-    ├── core/                   # Global Config & Cached Data Loaders
-    ├── services/               # Multi-Provider LLM & NewsAPI Integrations
-    ├── utils/                  # UI Themes, CSS Injections & Document Exporters
-    ├── components/             # Reusable UI Widgets, Header & Dynamic Sidebar
-    └── views/                  # Dedicated Tactical Page Views
-```
+| USP # | Core Capability | Demonstrable Implementation in Prototype |
+| :--- | :--- | :--- |
+| **01** | **Unified Crime Intelligence** | Ingests and correlates disparate FIRs, CDR telecommunications, financial transfers, and ANPR vehicle tracking into one connected investigation path: `FIR-104` ➔ `Person (Rahul)` ➔ `Phone` ➔ `Vehicle (MH12AB1234)` ➔ `TXN-203` ➔ `Related Case (FIR-087)`. |
+| **02** | **Entity Resolution & Deduplication** | Identifies duplicate identities across fragmented police logs (*Rahul Sharma* in FIR-104 vs. *Rahul Sharm* in CDR-202 vs. *Rahul S.* in RTO-019) with a **97% match confidence** using phonetic similarity, shared phone numbers, and common vehicle links, enabling 1-click unification into `ENT-001`. |
+| **03** | **Relationship-Based Knowledge Graph** | Interactive network canvas color-coding distinct entity types (Persons, Vehicles, Phones, Locations, Cases, Transactions) with clickable side-panel dossiers and in-graph natural language querying. |
+| **04** | **Cross-Case Link Discovery** | Automatically discovers hidden links between independent police cases: surfaces that getaway vehicle **`MH12AB1234`** from Swargate warehouse burglary (`FIR-087`) is owned by prime suspect Rahul Sharma in Kothrud electronics theft (`FIR-104`). |
+| **05** | **100% Evidence Traceability** | Every insight, graph edge, and prioritized suspect is traceable with direct citation tags (`[FIR-104]`, `[CDR-202]`, `[VEH-019]`, `[FIN-203]`). |
+| **06** | **Explainable Investigation Priority** | Transparent heuristic scoring ($87/100$) evaluating network connectivity ($30/35$), cross-case links ($25/25$), financial anomalies ($18/20$), and evidence strength ($14/20$) with statutory disclaimers. |
+
+---
+
+## 🎬 60-Second Hackathon Hero Demonstration Flow
+
+For live presentations and hackathon evaluation, run this seamless demonstration flow:
+
+1. **Step 1 — Login**: Access the portal via the **1-Click Demo Login** button as Lead Investigator **PI Vikram Patil** (`Badge: MH-PN-4082`).
+2. **Step 2 — Case Overview**: Open active case **`FIR-104 — Vehicle & Electronic Goods Theft`** (Kothrud Police Station).
+3. **Step 3 — Data Ingestion**: Open **Data Intelligence Hub** to inspect ingested FIR, CDR (14 calls in 48h), vehicle ANPR sightings, and financial transfers.
+4. **Step 4 — Entity Resolution**: Open **Entity Extraction & Resolution** to review the candidate match between *Rahul Sharma* and *Rahul Sharm* (Match Score: 97%), and click **"Confirm Match & Merge Entities"** to unify into `ENT-001`.
+5. **Step 5 — Knowledge Graph**: Open **Knowledge Graph Workspace** to explore the interactive relational graph. Test the in-graph question: *"How many connections does Rahul Sharma have?"* to see the 4 verified connections appear with evidence citations.
+6. **Step 6 — Cross-Case Discovery**: Open **Investigation Insights** to show the critical link: `Case FIR-104 ⟷ Vehicle MH12AB1234 ⟷ Case FIR-087`.
+7. **Step 7 — 72-Hour Timeline**: Review the concentrated operational sequence spanning August 10–13, 2026.
+8. **Step 8 — Investigation Priority**: View the explainable **87/100** score breakdown for prime target Rahul Sharma.
+9. **Step 9 — Ask CrimeLens**: Query the AI assistant with *"Which cases share the same vehicle?"* and view the evidence-backed citation response.
+10. **Step 10 — Report Generation**: Click **Compile Structured Intelligence Report** to preview and download the official police dossier.
+
+---
+
+## 📋 Technology & Prototype Truth Matrix
+
+| Module | Prototype Implementation | Production / Proposed Roadmap |
+| :--- | :--- | :--- |
+| **Authentication & RBAC** | ✅ Implemented (Session Auth, Badge Verification, 1-Click Demo) | Government SSO / CCTNS OAuth2 Integration |
+| **Case Management** | ✅ Implemented (CRUD, Priority & Status Filters, Context Switcher) | National Crime Records Bureau (NCRB) ICJS API |
+| **Data Ingestion** | ✅ Implemented (Heterogeneous Ingestion, Progress Bar, View & Edit) | Automated ETL pipeline with OCR & ANPR stream processors |
+| **Entity Extraction** | ✅ Implemented (Named Entity Classification Table) | Production Fine-Tuned Legal NER (SpaCy / HuggingFace) |
+| **Entity Resolution** | ✅ Implemented (Fuzzy String, Levenshtein, Phonetic & Shared Metadata) | Scalable Record Linkage & Graph ML Deduplication |
+| **Knowledge Graph** | ✅ Implemented (Plotly + NetworkX, Color Nodes, Dossier Inspector) | Neo4j / AWS Neptune Distributed Graph Database |
+| **Cross-Case Linkage** | ✅ Implemented (Deterministic Multi-Case Joint Asset Search) | Graph Neural Networks (GNN) for link prediction |
+| **Investigation Priority** | ✅ Implemented (Transparent 4-Factor Weighted Algorithm) | Calibrated Risk Scoring with human-in-the-loop auditing |
+| **Investigation Query** | ✅ Implemented (Rule-Based Fallback + Multi-Provider LLM Hook) | RAG Pipeline with CCTNS Vector Embeddings |
+| **Dossier Generation** | ✅ Implemented (Structured Police Report Exporter) | Cryptographically Signed Court-Admissible PDF Export |
 
 ---
 
 ## 🚀 Quickstart Installation Guide
 
-### Step 1: Clone the Repository
+### Prerequisites
+- Python 3.10+
+- Git
+
+### Step 1: Clone Repository
 ```bash
 git clone https://github.com/AviBhosale01/SIH_CI.git
 cd SIH_CI
@@ -207,23 +105,20 @@ cd SIH_CI
 
 ### Step 2: Install Dependencies
 ```bash
-pip install -r requirements.txt openpyxl reportlab
+pip install -r requirements.txt
 ```
 
-### Step 3: Run Application Locally
+### Step 3: Launch CrimeLens
 ```bash
 streamlit run app.py
 ```
-The application will launch automatically in your browser at `http://localhost:8501`.
+
+The application will launch automatically at `http://localhost:8501`.
 
 ---
 
 ## 👨‍💻 Author & Attribution
 
-<div align="center">
-
-Developed with ❤️ by **Avii**
+Developed with ❤️ for **Smart India Hackathon (SIH)** by **Avii**.
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-AviBhosale01-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/AviBhosale01)
-
-</div>
