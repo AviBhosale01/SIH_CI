@@ -117,8 +117,6 @@ The application will launch automatically at `http://localhost:8501`.
 
 ---
 
-## 👨‍💻 Author & Attribution
+## ⚖️ Hackathon Project
 
-Developed with ❤️ for **Smart India Hackathon (SIH)** by **Avii**.
-
-[![GitHub Profile](https://img.shields.io/badge/GitHub-AviBhosale01-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/AviBhosale01)
+Developed for **Smart India Hackathon (SIH)**.
